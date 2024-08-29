@@ -24,20 +24,21 @@ function divide(a, b) {
 };
 
 // Takes an operator and 2 numbers and then calls one of the above functions on the numbers.
-function operate(a, o, b) {
-    firstNumber == a;
-    lastNumber == b;
+function operate(operator, firstNumber, lastNumber) {
+    switch (operator) {
+        case "+":
+            return add(firstNumber, lastNumber);
+        case "-":
+            return substract(firstNumber, lastNumber);
+        case "*":
+            return multiply(firstNumber, lastNumber);
+        case "/":
+            return divide(firstNumber, lastNumber);
+        default:
+            return "invalid operator";
+    }
 
-    if (operator == "+") {
-        return add(firstNumber, lastNumber);
-    } else if (operator == "-") {
-        return substract(firstNumber, lastNumber);
-    } else if (operator == "*") {
-        return multiply(firstNumber, lastNumber);
-    } else if (operator == "/") {
-        return divide(firstNumber, lastNumber);
-    } else { "invalid syntax" };
-    
+
 };
 
 
