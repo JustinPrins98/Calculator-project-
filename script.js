@@ -3,8 +3,11 @@ let firstNumber = null;
 let lastNumber = null;
 let operator = null;
 
-
-
+const display = document.querySelector(".display");
+const numberButtons = document.querySelectorAll(".calculator-numbers button");
+const operatorButtons = document.querySelectorAll(".calculator-operators button");
+const equalButton = document.querySelector('button[value="="]');
+const clearButton = document.querySelector('button[value="C"]');
 
 
 
