@@ -1,6 +1,9 @@
-let firstNumber;
-let lastNumber;
-let operator;
+let currentDisplayValue ='';
+let firstNumber = null;
+let lastNumber = null;
+let operator = null;
+
+
 
 
 
