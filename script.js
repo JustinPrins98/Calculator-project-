@@ -25,13 +25,22 @@ numberButtons.forEach(button => {
 
         display.textContent = currentDisplayValue;
     })
-})
+});
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        
+        if(firstNumber === null) {
+            firstNumber = parseFloat(currentDisplayValue);
+        } else if (operator) {
+            const result = operate(operator, firstNumber, parseFloat(currentDisplayValue));
+            display.textContent = result;
+            firstNumber = result;
+        }
+
+        operator = button.textContent;
+        waitingForSecondNumber = true;
     })
-})
+});
 
 
 
