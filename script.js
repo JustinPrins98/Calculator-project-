@@ -1,7 +1,8 @@
-let currentDisplayValue ='';
+let currentDisplayValue = '';
 let firstNumber = null;
 let lastNumber = null;
 let operator = null;
+let waitingForSecondNumber = false;
 
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll(".calculator-numbers button");
@@ -9,10 +10,33 @@ const operatorButtons = document.querySelectorAll(".calculator-operators button"
 const equalButton = document.querySelector('button[value="="]');
 const clearButton = document.querySelector('button[value="C"]');
 
+// Buttons and events
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.value;
+
+        if (waitingForSecondNumber) {
+            currentDisplayValue = value;
+            waitingForSecondNumber = false;
+        } else {
+            currentDisplayValue = currentDisplayValue == '' ? value : currentDisplayValue + value;
+        }
+
+        display.textContent = currentDisplayValue;
+    })
+})
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        
+    })
+})
 
 
 
 
+// Math fucntions
 function add(a, b) {
     return a + b;
 };
