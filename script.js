@@ -29,7 +29,7 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if(firstNumber === null) {
+        if (firstNumber === null) {
             firstNumber = parseFloat(currentDisplayValue);
         } else if (operator) {
             const result = operate(operator, firstNumber, parseFloat(currentDisplayValue));
@@ -40,6 +40,24 @@ operatorButtons.forEach(button => {
         operator = button.textContent;
         waitingForSecondNumber = true;
     })
+});
+
+equalButton.addEventListener('click', () => {
+    if (operator && firstNumber !== null) {
+        const result = operate(operator, firstNumber, parseFloat(currentDisplayValue));
+        display.textContent = result;
+        firstNumber = result;
+        operator = null;
+        waitingForSecondNumber = true;
+    }
+});
+
+clearButton.addEventListener('click', () => {
+    currentDisplayValue = '';
+    firstNumber = null;
+    operator = null;
+    waitingForSecondNumber = false;
+    display.textContent = '0';
 });
 
 
