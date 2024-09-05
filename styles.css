@@ -1,7 +1,9 @@
-body {
+.calculator-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    /* This centers it vertically */
 }
 
 .calculator {
