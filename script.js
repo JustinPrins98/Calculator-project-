@@ -5,16 +5,24 @@ let operator = null;
 let waitingForSecondNumber = false;
 
 const display = document.querySelector(".display");
-const numberButtons = document.querySelectorAll(".calculator-numbers button");
+const numberButtons = document.querySelectorAll(".calculator-numbers button:not([value='backspace'])");
 const operatorButtons = document.querySelectorAll(".calculator-operators button");
 const equalButton = document.querySelector('button[value="="]');
 const clearButton = document.querySelector('button[value="C"]');
+const decimalButton = document.querySelector('button[value="."]');
+const backspaceButton = document.querySelector('button[value="backspace"]');
 
 // Buttons and events
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         const value = button.value;
+
+        if (value === ".") {
+            if (currentDisplayValue.includes(".")) {
+                return;
+            }
+        }
 
         if (waitingForSecondNumber) {
             currentDisplayValue = value;
@@ -60,6 +68,14 @@ clearButton.addEventListener('click', () => {
     display.textContent = '0';
 });
 
+backspaceButton.addEventListener('click', () => {
+    if (currentDisplayValue.length > 0) {
+        // Remove the last character from the current display value
+        currentDisplayValue = currentDisplayValue.slice(0, -1);
+        // Update the display
+        display.textContent = currentDisplayValue || '0'; // Show '0' if empty
+    }
+});
 
 
 
